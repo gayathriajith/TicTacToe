@@ -98,6 +98,7 @@ def playerX(board):
     if(pos not in range(0,10)):
         print("\n\nSorry! You entered wrong position!\n CHOOSE FROM POSITION 1 to 9 ")
         playerX(board)
+    #marker X is colored and made bold
     marker = '\033[1m\033[91mX\033[0m'
     if(space_check(board, pos)==True):   
         
@@ -115,6 +116,7 @@ def playerY(board):
     if(pos not in range(0,10)):
         print("\n\nSorry! You entered wrong position!\n CHOOSE FROM POSITION 1 to 9 ")
         playerY(board)
+    #marker O is colored and made bold
     marker='\033[1m\033[92mO\033[0m'
     if(space_check(board, pos)==True):   
         
