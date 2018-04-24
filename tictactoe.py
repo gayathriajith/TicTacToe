@@ -36,7 +36,7 @@ def win_check(board, mark):
     if(board[3]==board[5] and board[5]==board[7] and board[7]==mark):
         check = 'wins'
         print("******************************************************")
-        print(f"*** You got an {mark}{mark}{mark} !!!  YOU WON!!!  ***")
+        print(f"*** You got an {mark}{mark}{mark} !!!  YOU WON!!!  ***") 
         print("******************************************************")
         sys.exit("GAME OVER!")
         
