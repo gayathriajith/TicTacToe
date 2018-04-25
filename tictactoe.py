@@ -22,7 +22,11 @@ def win_check(board, mark):
             print("******************************************************")
             print("*** You got an {mark}{mark}{mark} !!!  YOU WON!!!  ***")
             print("******************************************************")
-            sys.exit("GAME OVER!")
+            again = input("Play again? Y to continue and ANY KEY to exit")
+            if(again=='Y' or again=='y'):
+                start_game()
+            else:
+                sys.exit("GAME OVER")
             
     
     for i in range (1,4):
@@ -31,25 +35,39 @@ def win_check(board, mark):
             print("******************************************************")
             print(f"*** You got an {mark}{mark}{mark} !!!  YOU WON!!!  ***")
             print("******************************************************")
-            sys.exit("GAME OVER!")
+            again = input("Play again? Y to continue and ANY KEY to exit")
+            if(again=='Y' or again=='y'):
+                start_game()
+            else:
+                sys.exit("GAME OVER")
+                
+                
             
     if(board[3]==board[5] and board[5]==board[7] and board[7]==mark):
         check = 'wins'
         print("******************************************************")
-        print(f"*** You got an {mark}{mark}{mark} !!!  YOU WON!!!  ***") 
+        print(f"*** You got an {mark}{mark}{mark} !!!  YOU WON!!!  ***")
         print("******************************************************")
-        sys.exit("GAME OVER!")
+        again = input("Play again? Y to continue and ANY KEY to exit")
+        if(again=='Y' or again=='y'):
+            start_game()
+        else:
+            sys.exit("GAME OVER")
         
     if(board[1]==board[5] and board[5]==board[9] and board[9]==mark):
         check = 'wins'
         print("******************************************************")
         print(f"*** You got an {mark}{mark}{mark} !!!  YOU WON!!!  ***")
         print("******************************************************")
-        sys.exit("GAME OVER!")
+        again = input("Play again? Y to continue and ANY KEY to exit")
+        if(again=='Y' or again=='y'):
+            start_game()
+        else:
+            sys.exit("GAME OVER")
         
 def replay(marker,board):
     
-    if(full_board_check(test_board)==True):
+    if(full_board_check(board)==True):
         sys.exit("GAME OVER!! ITS A TIE!! PLAY AGAIN!! ")
     else:
         yesorno = input("\nKeep Playing? ***[TYPE 'Y' or 'N'] ***")
@@ -87,7 +105,7 @@ def display_board(board):
     print(f"     |     |     ")
     print(f"--1--|--2--|--3--")
     
-test_board = ['#',' ',' ',' ',' ',' ',' ',' ',' ',' ']  
+
 
        
     
@@ -98,11 +116,10 @@ def playerX(board):
     if(pos not in range(0,10)):
         print("\n\nSorry! You entered wrong position!\n CHOOSE FROM POSITION 1 to 9 ")
         playerX(board)
-    #marker X is colored and made bold
     marker = '\033[1m\033[91mX\033[0m'
     if(space_check(board, pos)==True):   
         
-        place_marker(marker, pos)
+        place_marker(board, marker, pos)
     else:
         print("\n\nPosition already filled.")
         playerX(board)
@@ -116,31 +133,31 @@ def playerY(board):
     if(pos not in range(0,10)):
         print("\n\nSorry! You entered wrong position!\n CHOOSE FROM POSITION 1 to 9 ")
         playerY(board)
-    #marker O is colored and made bold
     marker='\033[1m\033[92mO\033[0m'
     if(space_check(board, pos)==True):   
         
-        place_marker(marker, pos)
+        place_marker(board, marker, pos)
     else:
         print("\n\nPosition already filled.")
         playerY(board)
     
 
     
-def place_marker(marker, position):
+def place_marker(board,marker, position):
     
     
     
-    test_board[position]=marker
-    display_board(test_board)
-    win_check(test_board,marker)
+    board[position]=marker
+    display_board(board)
+    win_check(board,marker)
 
-    replay(marker,test_board)
+    replay(marker,board)
       
 
     
 def start_game():
     
+    test_board = ['#',' ',' ',' ',' ',' ',' ',' ',' ',' ']  
     play=None
     empty=None
     display_board(test_board)
@@ -152,9 +169,10 @@ def start_game():
         playerX(test_board)
         
         
-    if(player1=='y'or player1=='Y'):
+    if(player1=='O'or player1=='o'):
         print("\nPlayer 1 has selected '\033[1m\033[92mO\033[0m'")
         print("\nPlayer 2 has selected '\033[1m\033[91mX\033[0m'")
         print("\nPlayer 1 gets the first chance")
         playerY(test_board)
  
+
