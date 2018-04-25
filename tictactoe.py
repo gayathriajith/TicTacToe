@@ -20,7 +20,7 @@ def win_check(board, mark):
         if(board[i]==board[i+1] and board[i+1]==board[i+2] and board[i+2]==mark ):
             check = 'wins'
             print("******************************************************")
-            print("*** You got an {mark}{mark}{mark} !!!  YOU WON!!!  ***")
+            print(f"*** You got an {mark}{mark}{mark} !!!  YOU WON!!!  ***")
             print("******************************************************")
             again = input("Play again? Y to continue and ANY KEY to exit")
             if(again=='Y' or again=='y'):
